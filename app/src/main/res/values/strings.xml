@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">Innohelp</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_new_delivery">New delivery</string>
+
+    <string name="enter_title">Enter title</string>
+    <string name="cost_of_order">Cost of order</string>
+    <string name="benefit">Benefit</string>
+    <string name="location">Location</string>
+    <string name="what_you_want">List, what you want:</string>
+    <string name="item">Item</string>
+    <string name="publish_order">Publish order</string>
+    <string name="new_request">New request</string>
+    <string name="order">Order</string>
+    <string name="delivery">Delivery</string>
+    <string name="care">Care</string>
+    <string name="enter_description">description</string>
+    <string name="publish_care">publish care</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="title_activity_main2">MainActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="login_message">To create and take orders, please, log in</string>
+    <string name="no_account_q">Don\'t have an account?</string>
+    <string name="create_new_account">create new</string>
+    <string name="existing_account">Already have an account?</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="create_account">create account</string>
+    <string name="created_by">Created by</string>
+    <string name="order_list">Order list:</string>
+    <string name="add">add</string>
+    <string name="join">join</string>
+    <string name="leave">leave</string>
+    <string name="close">close</string>
+    <string name="link">Link:</string>
+    <string name="price">Price:</string>
+    <string name="added_by">Added by:</string>
+    <string name="new_order">New order</string>
+    <string name="new_care">New care</string>
+    <string name="title">Title</string>
+    <string name="cancel">Cancel</string>
+    <string name="closed">Closed</string>
+</resources>
