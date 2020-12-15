@@ -67,7 +67,7 @@
                 android:paddingHorizontal="24dp"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/publish_care"
-                android:background="@color/design_default_color_primary"
+                android:background="@color/purple_500"
                 android:textColor="@color/design_default_color_on_primary"/>
 
         </LinearLayout>

@@ -84,7 +84,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:background="@color/design_default_color_primary"
+                    android:background="@color/purple_500"
                     android:text="@string/take"
                     android:textColor="@color/design_default_color_on_primary"/>
 
@@ -94,7 +94,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:background="@color/design_default_color_primary"
+                    android:background="@color/purple_500"
                     android:text="@string/cancel"
                     android:textColor="@color/design_default_color_on_primary"/>
 
@@ -104,7 +104,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:background="@color/design_default_color_primary"
+                    android:background="@color/purple_500"
                     android:text="@string/close"
                     android:textColor="@color/design_default_color_on_primary"/>
 

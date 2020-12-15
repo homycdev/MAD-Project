@@ -74,7 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/taken_orders"
-            android:background="@color/design_default_color_primary"
+            android:background="@color/purple_500"
             android:textColor="@color/design_default_color_on_primary"
             android:paddingHorizontal="24dp"
             android:layout_gravity="center"/>
@@ -86,7 +86,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/taken_deliveries"
-            android:background="@color/design_default_color_primary"
+            android:background="@color/purple_500"
             android:textColor="@color/design_default_color_on_primary"
             android:paddingHorizontal="24dp"
             android:layout_gravity="center"/>
@@ -98,7 +98,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/taken_cares"
-            android:background="@color/design_default_color_primary"
+            android:background="@color/purple_500"
             android:textColor="@color/design_default_color_on_primary"
             android:paddingHorizontal="24dp"
             android:layout_gravity="center"/>
@@ -112,7 +112,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login"
-        android:background="@color/design_default_color_primary"
+        android:background="@color/purple_500"
         android:textColor="@color/design_default_color_on_primary"
         android:paddingHorizontal="24dp"
         android:layout_gravity="center"/>

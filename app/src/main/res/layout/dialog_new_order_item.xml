@@ -51,7 +51,7 @@
             android:id="@+id/dialog_new_order_item_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/design_default_color_primary"
+            android:background="@color/cancel"
             android:textColor="@color/design_default_color_on_primary"
             android:text="@string/cancel"/>
 
@@ -60,7 +60,7 @@
             android:layout_marginStart="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/design_default_color_primary"
+            android:background="@color/purple_500"
             android:textColor="@color/design_default_color_on_primary"
             android:text="@string/add"/>
 

@@ -71,7 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:background="@color/design_default_color_primary"
+            android:background="@color/purple_500"
             android:paddingHorizontal="50dp"
             android:paddingVertical="5dp"
             android:text="@string/login"
@@ -83,7 +83,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:background="@color/design_default_color_primary"
+            android:background="@color/purple_500"
             android:paddingHorizontal="50dp"
             android:paddingVertical="5dp"
             android:text="@string/create_account"
@@ -147,7 +147,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="64dp"
-            android:indeterminateTint="@color/design_default_color_primary" />
+            android:indeterminateTint="@color/purple_500" />
 
     </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

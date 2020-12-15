@@ -75,7 +75,7 @@
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/activity_view_order_add_item"
-                        android:background="@color/design_default_color_primary"
+                        android:background="@color/purple_500"
                         android:textColor="@color/design_default_color_on_primary"
                         android:text="@string/add"
                         android:layout_gravity="end"
@@ -96,7 +96,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:background="@color/design_default_color_primary"
+                    android:background="@color/purple_500"
                     android:text="@string/join"
                     android:textColor="@color/design_default_color_on_primary"/>
 
@@ -106,7 +106,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:background="@color/design_default_color_primary"
+                    android:background="@color/purple_500"
                     android:text="@string/leave"
                     android:textColor="@color/design_default_color_on_primary"/>
 
@@ -116,7 +116,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:background="@color/design_default_color_primary"
+                    android:background="@color/purple_500"
                     android:text="@string/close"
                     android:textColor="@color/design_default_color_on_primary"/>
 

@@ -142,7 +142,7 @@
                 android:id="@+id/new_request_publish_button"
                 android:paddingVertical="5dp"
                 android:paddingHorizontal="24dp"
-                android:background="@color/design_default_color_primary"
+                android:background="@color/purple_500"
                 android:textColor="@color/design_default_color_on_primary"
                 android:text="@string/publish_order"
                 android:layout_marginTop="24dp"
