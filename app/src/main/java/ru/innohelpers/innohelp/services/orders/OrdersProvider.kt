@@ -1,18 +1,19 @@
 package ru.innohelpers.innohelp.services.orders
 
-import ru.innohelpers.innohelp.data.extensions.findById
 import ru.innohelpers.innohelp.data.order.Order
 import ru.innohelpers.innohelp.data.order.OrderItem
+import ru.innohelpers.innohelp.realm.storage.IOrderStorage
 import ru.innohelpers.innohelp.services.server.IApiServer
 import javax.inject.Inject
 
-class OrdersProvider @Inject constructor(private val server: IApiServer) : IOrdersProvider {
-
-    private var orders: ArrayList<Order> = ArrayList()
+class OrdersProvider @Inject constructor(private val server: IApiServer, private val orderStorage: IOrderStorage) : IOrdersProvider {
 
     override suspend fun getAllOrders(forceNet: Boolean): ArrayList<Order> {
+        val orders = orderStorage.getAllOrders()
         if (forceNet || orders.size == 0) {
-            orders = ArrayList(server.getAllOrders())
+            val ordersResponse = server.getAllOrders()
+            orderStorage.storeAllOrders(ordersResponse)
+            return ArrayList(ordersResponse)
         }
         return orders
     }
@@ -20,13 +21,10 @@ class OrdersProvider @Inject constructor(private val server: IApiServer) : IOrde
     override suspend fun getOrder(orderId: String, forceNet: Boolean): Order {
         if (forceNet) {
             val order =  server.getOrder(orderId)
-            val foundOrder = orders.findById(orderId)
-            if (foundOrder != null)
-                orders.remove(foundOrder)
-            orders.add(order)
+            orderStorage.storeOrder(order)
             return order
         }
-        return orders.findById(orderId) ?: return getOrder(orderId, true)
+        return orderStorage.findOrderById(orderId) ?: return getOrder(orderId, true)
     }
 
     override suspend fun createOrder(order: Order): String? {

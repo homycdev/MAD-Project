@@ -35,8 +35,6 @@ class ObservableCollection<TValue> : Iterable<TValue> {
 
         lifecycleOwner.lifecycle.addObserver(observer)
         mObserversMap[lifecycleOwner.lifecycle] = configuration
-
-        mHandler.post { configuration.itemsInsertedListener?.invoke(this,  ItemsInsertedArgs(0, size)) }
     }
 
     fun add(item: TValue) {

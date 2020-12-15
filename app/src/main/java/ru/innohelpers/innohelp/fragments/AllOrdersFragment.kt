@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.facebook.shimmer.ShimmerFrameLayout
 import ru.innohelpers.innohelp.R
 import ru.innohelpers.innohelp.activity.MainActivity
@@ -19,6 +20,7 @@ class AllOrdersFragment : MainFragmentBase() {
     private lateinit var allDeliveryRecyclerView: RecyclerView
     private lateinit var shimmer: ShimmerFrameLayout
     private lateinit var ordersAdapter: OrdersRecyclerViewAdapter
+    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
     override fun newItemActivity(): Class<*> {
         return NewOrderActivity::class.java
     }
@@ -28,6 +30,7 @@ class AllOrdersFragment : MainFragmentBase() {
 
 
         allDeliveryRecyclerView = view.findViewById(R.id.all_delivery_recycler_view)
+        swipeRefreshLayout = view.findViewById(R.id.swipe_refresh)
         shimmer = view.findViewById(R.id.all_delivery_shimmer)
 
         clearOrders()
@@ -58,11 +61,35 @@ class AllOrdersFragment : MainFragmentBase() {
             }
         })
 
+        swipeRefreshLayout.setOnRefreshListener {
+            viewModel.loadAllOrders(true)
+            swipeRefreshLayout.isRefreshing = false
+        }
+
         viewModel.loadAllOrders(false)
+        initData()
         setHasOptionsMenu(true)
         return view
     }
 
+    private fun initData() {
+        val viewModel = (activity as MainActivity).ordersViewModel
+        clearOrders()
+        initAdapter()
+        for (item in viewModel.allOrders)
+            addItem(item, 0)
+
+        if (viewModel.loadingOrders.value == null) return
+        if (viewModel.loadingOrders.value!!) {
+            shimmer.startShimmer()
+            shimmer.visibility = View.VISIBLE
+            allDeliveryRecyclerView.visibility = View.GONE
+        } else {
+            shimmer.stopShimmer()
+            allDeliveryRecyclerView.visibility = View.VISIBLE
+            shimmer.visibility = View.GONE
+        }
+    }
 
     private fun addItem(item: OrderViewData, position: Int) {
         ordersAdapter.data.add(position, item)

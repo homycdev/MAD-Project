@@ -1,11 +1,10 @@
 package ru.innohelpers.innohelp.view_models
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import org.apache.commons.codec.digest.DigestUtils
 import ru.innohelpers.innohelp.InnoHelpApplication
+import ru.innohelpers.innohelp.component_model.ObservableObject
 import ru.innohelpers.innohelp.data.user.User
 import ru.innohelpers.innohelp.services.authentication.IUserProvider
 import javax.inject.Inject
@@ -16,8 +15,8 @@ class LoginActivityViewModel : ViewModel() {
         InnoHelpApplication.servicesComponent.inject(this)
     }
 
-    var user: MutableLiveData<User?> = MutableLiveData()
-    var busy: MutableLiveData<Boolean> = MutableLiveData(false)
+    var user = ObservableObject<User>()
+    var busy = ObservableObject<Boolean>()
 
     @Inject
     lateinit var userProvider: IUserProvider
@@ -26,27 +25,22 @@ class LoginActivityViewModel : ViewModel() {
         busy.value = true
         GlobalScope.launch {
             if (userProvider.user != null && userProvider.user!!.userName == userName) {
-                user.postValue(userProvider.user)
+                user.value = userProvider.user
                 return@launch
             }
-            val passHash = calculateHash(password)
-            userProvider.login(userName, passHash)
-            user.postValue(userProvider.user)
-            busy.postValue(false)
+            userProvider.login(userName, password)
+            user.value = userProvider.user
+            busy.value = false
         }
     }
 
     fun register(userName: String, password: String) {
         busy.value = true
         GlobalScope.launch {
-            val passHash = calculateHash(password)
-            userProvider.register(userName, passHash)
-            user.postValue(userProvider.user)
-            busy.postValue(false)
+            userProvider.register(userName, password)
+            user.value = userProvider.user
+            busy.value = false
         }
     }
 
-    private fun calculateHash(password: String): String {
-        return DigestUtils.md5Hex(password)
-    }
 }

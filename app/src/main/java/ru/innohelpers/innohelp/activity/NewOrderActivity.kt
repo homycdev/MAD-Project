@@ -2,6 +2,7 @@ package ru.innohelpers.innohelp.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -24,9 +25,18 @@ class NewOrderActivity : AppCompatActivity() {
     @Inject
     lateinit var viewModel: OrdersViewModel
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home)
+            onBackPressed()
+        return super.onOptionsItemSelected(item)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_order)
+        setSupportActionBar(findViewById(R.id.toolbar))
+
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         titleTextView = findViewById(R.id.activity_new_order_title)
         descriptionTextView = findViewById(R.id.activity_new_order_description)

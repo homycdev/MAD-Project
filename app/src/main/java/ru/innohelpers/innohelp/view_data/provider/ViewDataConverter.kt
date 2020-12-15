@@ -1,10 +1,14 @@
 package ru.innohelpers.innohelp.view_data.provider
 
+import ru.innohelpers.innohelp.data.care.Care
+import ru.innohelpers.innohelp.data.delivery.Delivery
 import ru.innohelpers.innohelp.data.order.Order
 import ru.innohelpers.innohelp.data.order.OrderItem
 import ru.innohelpers.innohelp.data.user.User
 import ru.innohelpers.innohelp.data.user.UserTakeInfo
 import ru.innohelpers.innohelp.services.authentication.IUserProvider
+import ru.innohelpers.innohelp.view_data.care.CareViewData
+import ru.innohelpers.innohelp.view_data.delivery.DeliveryViewData
 import ru.innohelpers.innohelp.view_data.order.OrderItemViewData
 import ru.innohelpers.innohelp.view_data.order.OrderViewData
 import ru.innohelpers.innohelp.view_data.user.UserTakeViewData
@@ -42,4 +46,42 @@ suspend fun Order.toViewData(userProvider: IUserProvider): OrderViewData {
     for (orderItem in items) viewData.items.add(orderItem.toViewData(userProvider))
 
     return viewData
+}
+
+suspend fun Delivery.toViewData(userProvider: IUserProvider): DeliveryViewData {
+    val creator = userProvider.getUser(creator)?.toViewData()
+    var takenByUser: UserViewData? = null
+    if (takenBy != null) takenByUser = userProvider.getUser(takenBy)?.toViewData()
+
+    return DeliveryViewData(
+        id,
+        openTime!!,
+        title,
+        location,
+        totalCost,
+        benefit, creator!!, takenByUser, ArrayList(items),
+        closed
+    )
+}
+
+@JvmName("toViewDataDelivery")
+suspend fun Collection<Delivery>.toViewData(userProvider: IUserProvider): Collection<DeliveryViewData> {
+    val viewDataCollection = ArrayList<DeliveryViewData>()
+    for (delivery in this) viewDataCollection.add(delivery.toViewData(userProvider))
+    return viewDataCollection
+}
+
+suspend fun Care.toViewData(userProvider: IUserProvider): CareViewData {
+    val creator = userProvider.getUser(creator)?.toViewData()
+    var takenByUser: UserViewData? = null
+    if (takenBy != null) takenByUser = userProvider.getUser(takenBy)?.toViewData()
+
+    return CareViewData(id, openTime, title, description, creator!!, benefit, takenByUser, closed)
+}
+
+@JvmName("toViewDataCare")
+suspend fun Collection<Care>.toViewData(userProvider: IUserProvider): Collection<CareViewData> {
+    val viewDataCollection = ArrayList<CareViewData>()
+    for (care in this) viewDataCollection.add(care.toViewData(userProvider))
+    return viewDataCollection
 }

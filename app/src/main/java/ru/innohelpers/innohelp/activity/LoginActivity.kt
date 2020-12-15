@@ -2,6 +2,7 @@ package ru.innohelpers.innohelp.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.ProgressBar
@@ -10,6 +11,7 @@ import androidx.appcompat.widget.AppCompatButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import ru.innohelpers.innohelp.R
+import ru.innohelpers.innohelp.data.user.User
 import ru.innohelpers.innohelp.view_models.LoginActivityViewModel
 
 class LoginActivity : AppCompatActivity() {
@@ -29,6 +31,8 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        setSupportActionBar(findViewById(R.id.toolbar))
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         loadingProgressBar = findViewById(R.id.activity_login_loading)
         loginEditText = findViewById(R.id.activity_login_login)
@@ -51,12 +55,12 @@ class LoginActivity : AppCompatActivity() {
         }
 
         val viewModel: LoginActivityViewModel by viewModels()
-        viewModel.busy.observe(this, {
-            if (it) loadingProgressBar.visibility = View.VISIBLE
+        viewModel.busy.observe(this, { _: Boolean?, busy: Boolean? ->
+            if (busy == true) loadingProgressBar.visibility = View.VISIBLE
             else loadingProgressBar.visibility = View.GONE
         })
-        viewModel.user.observe(this, {
-            if (it == null) return@observe
+        viewModel.user.observe(this, { _: User?, user: User? ->
+            if (user == null) return@observe
             setResult(1)
             finish()
         })
@@ -69,6 +73,12 @@ class LoginActivity : AppCompatActivity() {
             if (passwordEditText.text.toString() == passwordConfirmEditText.text.toString())
                 viewModel.register(loginEditText.text.toString(), passwordEditText.text.toString())
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home)
+            onBackPressed()
+        return super.onOptionsItemSelected(item)
     }
 
     private fun switchToRegister() {

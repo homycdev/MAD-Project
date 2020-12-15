@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:id="@+id/delivery_recycler_view_item_container"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="?attr/selectableItemBackground"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="24dp">
+
+    <LinearLayout
+        android:layout_margin="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/delivery_recycler_view_item_title"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textAllCaps="true"/>
+        <View
+            android:layout_marginTop="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/design_default_color_primary"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+            <TextView
+                android:id="@+id/delivery_recycler_view_item_owner"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                app:drawableStartCompat="@drawable/ic_person_24"
+                android:drawablePadding="5dp" />
+            <TextView
+                android:layout_weight="1"
+                android:id="@+id/delivery_recycler_view_item_location"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:drawableStartCompat="@drawable/ic_location_24"
+                android:drawablePadding="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp">
+            <TextView
+                android:id="@+id/delivery_recycler_view_item_cost"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                app:drawableStartCompat="@drawable/ic_benefit_24"
+                android:layout_height="wrap_content"
+                android:drawablePadding="5dp" />
+            <TextView
+                android:layout_weight="1"
+                android:id="@+id/delivery_recycler_view_item_benefit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:drawablePadding="5dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -3,6 +3,7 @@ package ru.innohelpers.innohelp.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.ProgressBar
@@ -38,9 +39,18 @@ class ViewOrderActivity : AppCompatActivity() {
     @Inject
     lateinit var viewModel: OrdersViewModel
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home)
+            onBackPressed()
+        return super.onOptionsItemSelected(item)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_order)
+        setSupportActionBar(findViewById(R.id.toolbar))
+
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         titleTextView = findViewById(R.id.activity_view_order_title)
         creatorTextView = findViewById(R.id.activity_view_order_creator)
